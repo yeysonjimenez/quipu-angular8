@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "quipu-f194a": {
+      "hosting": {
+        "quipu": [
+          "quipu-f194a"
+        ]
+      }
+    }
+  }
+}
