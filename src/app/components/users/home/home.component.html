@@ -18,7 +18,7 @@
                 <p class="badge badge-info">
                  User : {{user}}
                 </p>
-                <mat-label>Tokens : {{tokens}} €</mat-label>
+                <mat-label>Tokens : {{tokens}} </mat-label>
                 <mat-tab-group mat-align-tabs="center">
                   <mat-tab label="Sell">
                     <p class="badge badge-info">
@@ -46,6 +46,8 @@
                     <p class="badge badge-info">
                       buy
                     </p>
+                    <mat-label>Current token price $ 1 USD</mat-label>
+                    <br>
                     <mat-form-field class="example-full-width">
                       <mat-label>Tokens to sell</mat-label>
                       <input   [(ngModel)]="buy" type="price"  matInput placeholder="Ex. 1" value="">
