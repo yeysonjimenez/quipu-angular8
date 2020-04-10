@@ -4,7 +4,6 @@
       <div class="col-xs-12 col-sm-6 col-md-4" >
         <div class="container">
           <div class="card">
-
             <div class="card-body text-center">
               <p>
                 <img class="img-fluid" >
@@ -16,40 +15,45 @@
                 <p class="badge badge-info" *ngIf="congratulations">
                   Congratulations you are new user
                 </p>
-
                 <p class="badge badge-info">
                  User : {{user}}
                 </p>
-                <p class="badge badge-info">
-                 Tokens : {{tokens}} €
-                </p>
-
-                <p class="badge badge-info">
-                 You want to sell or buy tokens ?
-                </p>
-                <div class="row">
-                  <div class="column">
+                <mat-label>Tokens : {{tokens}} €</mat-label>
+                <mat-tab-group mat-align-tabs="center">
+                  <mat-tab label="Sell">
                     <p class="badge badge-info">
                       sell
                     </p>
-                    <input [(ngModel)]="sell" type="price" placeholder="sell" >
+                    <mat-label *ngIf="errorm" class="lb">You don't have enough Tokens</mat-label>
+                    <br>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Tokens to sell</mat-label>
+                      <input [(ngModel)]="sell" matInput type="number" placeholder="Ex. 1" value="">
+                      <span matPrefix>&nbsp;</span>
+                    </mat-form-field>
                     <p class="badge badge-info">
                       What is the price you want to sell them ?
                     </p>
-                    <input [(ngModel)]="price" type="price"  placeholder="price" >
+                    <mat-form-field appearance="fill">
+                      <mat-label>Price to sell</mat-label>
+                      <input [(ngModel)]="price" type="price" matInput placeholder="Ex. $" value="">
+                      <span matPrefix>$&nbsp;</span>
+                    </mat-form-field>
+                    <br>
                     <button (click)="onClickMe()"> sell it!</button>
-                  </div>
-                  <div class="column">
+                  </mat-tab>
+                  <mat-tab label="Buy">
                     <p class="badge badge-info">
                       buy
                     </p>
-                      <br>
-                      <br>
-                    <input [(ngModel)]="buy" type="price"  placeholder=" buy ">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Tokens to sell</mat-label>
+                      <input   [(ngModel)]="buy" type="price"  matInput placeholder="Ex. 1" value="">
+                    </mat-form-field>
+                    <br>
                     <button (click)="buyTokens()"> buy</button>
-                  </div>
-                </div>
-
+                  </mat-tab>
+                </mat-tab-group>
                 <p class="badge badge-info">
                 </p>
               </div>

@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
     console.log('This is a init !');
   }
   onLogin(): void {
-    //this.onCreateUser();
     this.checkProfile();
   }
  getUsers(){

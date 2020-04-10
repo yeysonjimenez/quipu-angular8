@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
 import {FirebaseService} from '../../../services/firebase.service';
 import {Md5} from 'ts-md5';
+import {ThemePalette} from '@angular/material';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +20,9 @@ export class HomeComponent implements OnInit {
   public id = '';
   public currentStatus = 1;
   public congratulations: boolean = true;
+  public errorm: boolean = false;
   public user = '';
+  background: ThemePalette = undefined;
   public tokens = '';
   public buy: number = null;
   constructor(private router: Router, private firebaseService: FirebaseService) {
@@ -34,7 +39,7 @@ export class HomeComponent implements OnInit {
 
   onClickMe() {
    this.congratulations = false;
-    this.updateUserFunc(this.id);
+   this.validate();
   }
 
   updateUserFunc(documentId){
@@ -73,5 +78,17 @@ export class HomeComponent implements OnInit {
     }, (error) => {
       console.log(error);
     });
+  }
+
+  private validate() {
+    if (this.sell  <= +this.tokens)
+    {
+      this.errorm = false;
+      this.updateUserFunc(this.id);
+    }
+    else {
+      this.errorm = true;
+      console.log(this.errorm);
+    }
   }
 }
